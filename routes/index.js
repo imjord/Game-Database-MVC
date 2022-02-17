@@ -8,5 +8,13 @@ router.get('/', (req,res) =>{
     res.render('games', {title: 'games'})
 });
 
+router.post('/', (req,res) => {
+    console.log(req.body)
+    const game = new Game(req.body)
+
+    game.save().then(results => {
+        res.redirect('/')
+    })
+})
 
 module.exports = router;
