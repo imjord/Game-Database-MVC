@@ -4,6 +4,7 @@ const app = express();
 const PORT = 3000;
 const db = require('./config/connection');
 const gameRoute = require('./routes/index');
+const addGames = require('./routes/gameList');
 
 // middleware
 app.use(express.json());
@@ -21,12 +22,10 @@ app.get('/', (req,res) =>{
     res.render('Home', {title: 'Home'})
 })
 
-app.get('/addgames', (req,res) =>{
-    res.render('addgame', {title: 'add'})
-})
+
 
 app.use('/games', gameRoute);
-
+app.use('/addgame', addGames)
 
 // server up wuth db
 db.once('open', ()=>{
