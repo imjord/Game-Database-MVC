@@ -9,8 +9,22 @@ const gameRoute = require('./routes/index');
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
+// views 
+// set the view engine to ejs
+app.set('view engine', 'ejs');
+
+
+
 
 // routes
+app.get('/', (req,res) =>{
+    res.render('Home', {title: 'Home'})
+})
+
+app.get('/addgames', (req,res) =>{
+    res.render('addgame', {title: 'add'})
+})
+
 app.use('/games', gameRoute);
 
 

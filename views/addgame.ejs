@@ -1,0 +1,15 @@
+<%- include('./layouts/Head.ejs') %> 
+<body>
+    <%- include('./layouts/Nav.ejs') %> 
+    <form action="/games" method="POST">
+        <label for="title">Title</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="description">Description:</label><br>
+        <input type="text" id="description" name="description"><br>
+        <label for="price">price:</label><br>
+        <input type="text" id="price" name="price"><br>
+        <button>submit</button>
+      </form>
+    <%- include('./layouts/Footer.ejs') %> 
+</body>
+</html>
