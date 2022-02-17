@@ -9,3 +9,6 @@ const GameSchema = new Schema({
 
 
 const Game = new model('Game', GameSchema);
+
+
+module.exports = Game;
