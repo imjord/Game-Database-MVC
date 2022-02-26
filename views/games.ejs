@@ -2,7 +2,19 @@
 <body>
     <%- include('./layouts/Nav.ejs') %> 
     <div>List of games: </div>
-    <%= games  %> 
+    <div>Game Title 
+        <% if(results.length > 0){  %> 
+        <% results.forEach(result => { %> 
+            <%= result.title  %>
+             <%= result.description  %>
+            <%= result.price  %>
+       <% })  %> 
+       <% } else { %>
+        <p>No games in database atm.</p>
+        <% } %>    
+        
+    </div>
+   
     <%- include('./layouts/Footer.ejs') %> 
 </body>
 </html>

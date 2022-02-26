@@ -1,16 +1,16 @@
 
-// const Game = require('../models/gameModel');
+const Game = require('../models/gameModel');
 
 
-// const GameController = {
+const GameController = {
 
-//     getGame(req,res){
-//         Game.find().then(results => res.json(results));
-//     }
-
-
-
-// }
+    getGame(req,res){
+        Game.find().then(results => res.json(results));
+    }
 
 
-// module.exports = GameController;
+
+}
+
+
+module.exports = GameController;

@@ -5,7 +5,8 @@ const Game = require('../models/gameModel');
 
 router.get('/', (req,res) =>{
     Game.find().then((results) => {
-        res.render('games', {title: 'add', games: results})
+        console.log(results[0].title)
+        res.render('games', {title: 'games', results})
 
     })
    
