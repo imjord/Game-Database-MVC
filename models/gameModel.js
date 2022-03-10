@@ -7,8 +7,6 @@ const GameSchema = new Schema({
     price: Number
 })
 
-
 const Game = new model('Game', GameSchema);
-
 
 module.exports = Game;

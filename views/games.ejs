@@ -1,20 +1,21 @@
-<%- include('./layouts/Head.ejs') %> 
+<%- include('./partials/head.ejs') %> 
+
 <body>
-    <%- include('./layouts/Nav.ejs') %> 
-    <div>List of games: </div>
-    <div>Game Title 
-        <% if(results.length > 0){  %> 
-        <% results.forEach(result => { %> 
-            <%= result.title  %>
-             <%= result.description  %>
-            <%= result.price  %>
-       <% })  %> 
-       <% } else { %>
-        <p>No games in database atm.</p>
-        <% } %>    
-        
-    </div>
-   
-    <%- include('./layouts/Footer.ejs') %> 
+    <%- include('./partials/head-nav.ejs') %>
+    <main class="main-content">
+       <h3>Created Games: </h3> 
+       <%if(games.length <= 0) { %>
+            <p>No games to show yet...</p>
+        <% } else { %>
+            <% games.forEach(game => { %>
+            
+              <div> Game Title: <span> <%= game.title  %></span></div>  
+               <div> Game Description: <span><%= game.description  %></span> </div>
+              <div> Game Price: <span>$<%= game.price  %> </span>    </div> <button class="btn btn-info">Add to Cart</button><button>Delete</button>
+              
+                <% }) %> 
+                <% } %>    
+    </main>
+    <%- include('./partials/footer.ejs') %>
 </body>
 </html>

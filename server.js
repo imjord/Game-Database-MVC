@@ -1,35 +1,37 @@
-// requires 
+// imports
 const express = require('express');
+const db = require('./config/connection.js');
 const app = express();
-const PORT = 3000;
-const db = require('./config/connection');
-const gameRoute = require('./routes/index');
-const addGames = require('./routes/gameList');
+const path = require('path');
 
 // middleware
+app.use(express.urlencoded({extended: false}))
 app.use(express.json());
-app.use(express.urlencoded({extended: false}));
 
-// views 
-// set the view engine to ejs
+// views
+app.set('views', path.join(__dirname, 'views'))
 app.set('view engine', 'ejs');
 
+// routes 
+const UserRoutes = require('./routes/User');
+const createGame = require('./routes/Game');
 
-
-
-// routes
+app.use('/users', UserRoutes);
+app.use('/games', UserRoutes);
+app.use('/addgames', createGame);
+  
+ 
 app.get('/', (req,res) =>{
-    res.render('Home', {title: 'Home'})
+    res.render('index', {title: "Home"})
+}) 
+//404 
+app.use("*", (req,res) => {
+    res.status(404).render('404', {title: "404"})
 })
+// start server with db 
 
-
-
-app.use('/games', gameRoute);
-app.use('/addgame', addGames)
-
-// server up wuth db
-db.once('open', ()=>{
-    app.listen(PORT, () =>{
-        console.log(`hey up on ${PORT}`);
+db.once('open', ()=> {
+    app.listen({port: 3000}, () =>{
+        console.log('server live');
     })
-})
+})                            

@@ -1,0 +1,38 @@
+<%- include('./partials/head.ejs') %> 
+
+<body>
+    
+    <%- include('./partials/head-nav.ejs') %>
+    <h1>ADD A NEW USER
+
+    </h1>
+    <form action="/users" method="POST">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="Username"required>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="Email" required>
+        <label for="password"> Password: </label>
+        <input type="password" name="Password" id="password">
+        <button>Submit</button>
+    </form>
+    <main class="main-content">
+        
+        Users currently in database :
+        
+        <% if (users.length <= 0) { %>
+
+            <p> there are currently no users please register some</p> 
+           
+            <% } else { %>
+
+                <% users.forEach(user => { %>
+                  <div> Usernames: <%= user.Username %> </div>  
+                    
+                <% }) %> 
+                <% } %>   
+       
+
+    </main>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
