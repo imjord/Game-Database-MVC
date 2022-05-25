@@ -1,41 +1,17 @@
 const router = require('express').Router();
-const User = require('../models/userModel');
-const Game = require('../models/gameModel');
+const { getUserGames, showUsers, createUser } = require('../Controllers/UserController');
 
 
 // posts 
 
-router.post("/", (req,res) =>{
-    const user = new User(req.body)
+router.route('/').get(showUsers).post(createUser);
 
-    user.save().then(result => {
-        
-        res.redirect("/users")
-    })
-})
 
 // show users games
 
-router.get('/games', (req,res) => {
+router.get('/games', getUserGames);
 
 
-
-
-  Game.find().then(result =>{
-    res.render('games', {title: "games", games: result});
-  }) 
-    
-    
-    
-})
-
-
-// show users
-router.get("/", (req,res) =>{
-  User.find().select('Username -_id').then((result) => {
-    res.render('users', {title: "users", users: result})  })
-    
-})
 
 
 // delete user 
