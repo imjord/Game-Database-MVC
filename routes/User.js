@@ -1,19 +1,6 @@
 const router = require('express').Router();
 const User = require('../models/userModel');
 const Game = require('../models/gameModel');
-// const axios = require('axios');
-
-// let URL = "https://api.rawg.io/api/games?key="
-
-// let API = "15536084472d43bb9041b619adf08b5d"
-
-
-
-
-
-// const {
-//     getUser
-// } = require('../Controllers/UserController');
 
 
 // posts 
